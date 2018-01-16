@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - pps@119.29.175.171">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="pps">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <schema id="3" name="mysql"/>
+    <schema id="4" name="performance_schema"/>
+    <schema id="5" name="sys"/>
+    <table id="6" parent="1" name="Complaints"/>
+    <table id="7" parent="1" name="DecorationApplication"/>
+    <table id="8" parent="1" name="EmergencyContact"/>
+    <table id="9" parent="1" name="RepairApplication"/>
+    <table id="10" parent="1" name="announcement">
+      <comment>公告表</comment>
+    </table>
+    <table id="11" parent="1" name="mobile_user_info">
+      <comment>移动端用户信息</comment>
+    </table>
+    <table id="12" parent="1" name="notice">
+      <comment>通知表</comment>
+    </table>
+    <table id="13" parent="1" name="payRule">
+      <comment>缴费规则</comment>
+    </table>
+    <table id="14" parent="1" name="payment">
+      <comment>缴费历史</comment>
+    </table>
+    <table id="15" parent="1" name="power"/>
+    <table id="16" parent="1" name="resource"/>
+    <table id="17" parent="1" name="role"/>
+    <table id="18" parent="1" name="user"/>
+    <table id="19" parent="1" name="user_fee_info">
+      <comment>用户缴费相关信息</comment>
+    </table>
+    <table id="20" parent="1" name="user_parking_ver">
+      <comment>住户提车费版本（仅支持租车位费用的缴纳）</comment>
+    </table>
+    <column id="21" parent="6" name="Complaints _Id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="22" parent="6" name="Id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="23" parent="6" name="Complaints _Status">
+      <mandatory>1</mandatory>
+      <data-type>int(2)|0</data-type>
+    </column>
+    <column id="24" parent="6" name="Complaints _Content">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="25" parent="6" name="Processor_Id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="26" parent="6" name="Complaints _Time">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="27" parent="6" name="ComplaintsProcessor_Time">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="28" parent="6" name="Complaints _Reply">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="29" parent="6" name="PRIMARY">
+      <columns>Complaints _Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="30" parent="7" name="DecorationApplication _Id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="31" parent="7" name="DecorationApplication _Status">
+      <mandatory>1</mandatory>
+      <data-type>int(2)|0</data-type>
+    </column>
+    <column id="32" parent="7" name="DecorationApplication _Reply">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="33" parent="7" name="DecorationApplication _Place">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="34" parent="7" name="DecorationApplication _Phone">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="35" parent="7" name="Id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="36" parent="7" name="Processor_Id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="37" parent="7" name="DecorationApplication _StartTime">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="38" parent="7" name="DecorationApplication _EndTime">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <key id="39" parent="7" name="PRIMARY">
+      <columns>DecorationApplication _Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="40" parent="8" name="EmergencyContact _Id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="41" parent="8" name="EmergencyContact _StartTime">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="42" parent="8" name="EmergencyContact _EndTime">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="43" parent="8" name="EmergencyContact _Name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="44" parent="8" name="EmergencyContact _Phone">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="45" parent="8" name="EmergencyContact _Type">
+      <mandatory>1</mandatory>
+      <data-type>int(2)|0</data-type>
+    </column>
+    <key id="46" parent="8" name="PRIMARY">
+      <columns>EmergencyContact _Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="47" parent="9" name="RepairApplication_Id">
+      <mandatory>1</mandatory>
+      <data-type>int(10)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="48" parent="9" name="RepairApplication _Status">
+      <mandatory>1</mandatory>
+      <data-type>int(2)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <column id="49" parent="9" name="RepairApplication_Place">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="50" parent="9" name="RepairApplication_Type">
+      <data-type>int(2)|0</data-type>
+    </column>
+    <column id="51" parent="9" name="RepairApplication_Name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="52" parent="9" name="RepairApplication_Phone">
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="53" parent="9" name="Damage_Status">
+      <data-type>int(2)|0</data-type>
+    </column>
+    <column id="54" parent="9" name="Id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="55" parent="9" name="RepairApplication_Time">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="56" parent="9" name="Processor_Id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="57" parent="9" name="PRIMARY">
+      <columns>RepairApplication_Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="58" parent="10" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="59" parent="10" name="pub_user_id">
+      <comment>发布者ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="60" parent="10" name="pub_content">
+      <comment>发布内容</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="61" parent="10" name="pub_date">
+      <comment>发布日期</comment>
+      <data-type>timestamp|0</data-type>
+    </column>
+    <column id="62" parent="10" name="pub_type">
+      <comment>公告类型</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="63" parent="10" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="64" parent="11" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="65" parent="11" name="user_id">
+      <comment>用户ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="66" parent="11" name="user_head_portrait">
+      <comment>用户头像</comment>
+      <data-type>blob|0</data-type>
+    </column>
+    <column id="67" parent="11" name="user_nickname">
+      <comment>用户昵称</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="68" parent="11" name="user_birthday">
+      <comment>用户生日</comment>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="69" parent="11" name="user_gender">
+      <comment>用户性别</comment>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <key id="70" parent="11" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="71" parent="12" name="ID">
+      <comment>通知ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="72" parent="12" name="pub_user_id">
+      <comment>推送者ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="73" parent="12" name="rec_user_id">
+      <comment>接收者ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="74" parent="12" name="notice_content">
+      <comment>通知内容</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="75" parent="12" name="pub_date">
+      <comment>推送日期</comment>
+      <data-type>datetime(6)|0</data-type>
+    </column>
+    <column id="76" parent="12" name="is_read">
+      <comment>是否查看</comment>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <key id="77" parent="12" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="78" parent="13" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="79" parent="13" name="rule_version">
+      <comment>缴费版本</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="80" parent="13" name="pub_id">
+      <comment>发布者ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="81" parent="13" name="rule_type">
+      <comment>规则类型（1：物业费 2：停车费..）</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="82" parent="13" name="rule_date">
+      <comment>规则发布日期</comment>
+      <data-type>timestamp|0</data-type>
+    </column>
+    <column id="83" parent="13" name="fee_amount">
+      <comment>金额大小</comment>
+      <data-type>double|0</data-type>
+    </column>
+    <key id="84" parent="13" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="85" parent="14" name="ID">
+      <comment>缴费记录ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="86" parent="14" name="pay_amount">
+      <comment>缴费金额</comment>
+      <data-type>double|0</data-type>
+    </column>
+    <column id="87" parent="14" name="pay_user_id">
+      <comment>缴费住户ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="88" parent="14" name="pay_date">
+      <comment>缴费日期</comment>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="89" parent="14" name="pay_months">
+      <comment>缴费月数</comment>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="90" parent="14" name="pay_type">
+      <comment>缴费类型</comment>
+      <data-type>varchar(11)|0</data-type>
+    </column>
+    <key id="91" parent="14" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="92" parent="15" name="Id">
+      <comment>权限ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="93" parent="15" name="power_name">
+      <comment>权限名称</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="94" parent="15" name="resource_ids">
+      <comment>资源ID</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="95" parent="15" name="PRIMARY">
+      <columns>Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="96" parent="16" name="Id">
+      <comment>资源ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="97" parent="16" name="resource_name">
+      <comment>资源名称</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="98" parent="16" name="resource_url">
+      <comment>路由</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="99" parent="16" name="PRIMARY">
+      <columns>Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="100" parent="17" name="Id">
+      <comment>角色ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="101" parent="17" name="role_name">
+      <comment>角色名称</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="102" parent="17" name="role_type">
+      <comment>角色类型</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="103" parent="17" name="power_ids">
+      <comment>权限ID</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="104" parent="17" name="PRIMARY">
+      <columns>Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="105" parent="18" name="Id">
+      <comment>用户ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="106" parent="18" name="logname">
+      <comment>登录名</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="107" parent="18" name="password">
+      <comment>用户密码</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="108" parent="18" name="role_ids">
+      <comment>角色ID</comment>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="109" parent="18" name="PRIMARY">
+      <columns>Id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="110" parent="19" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="111" parent="19" name="user_id">
+      <comment>住户ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="112" parent="19" name="housing_size">
+      <comment>住房面积</comment>
+      <data-type>double|0</data-type>
+    </column>
+    <column id="113" parent="19" name="property_ver">
+      <comment>物业费版本</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="114" parent="19" name="is_parking_fee">
+      <comment>是否需要交纳停车费(1：yes 0：no)</comment>
+      <data-type>int(11)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <key id="115" parent="19" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="116" parent="20" name="ID">
+      <comment>ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="117" parent="20" name="user_id">
+      <comment>用户ID</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="118" parent="20" name="parking_version">
+      <comment>停车费版本</comment>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="119" parent="20" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
