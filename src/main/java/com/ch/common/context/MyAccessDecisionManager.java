@@ -36,10 +36,6 @@ public class MyAccessDecisionManager implements AccessDecisionManager{
 				}
 			}
 			throw new AccessDeniedException("no right");
-			
-		
-
-		
 	}
 
 	@Override
