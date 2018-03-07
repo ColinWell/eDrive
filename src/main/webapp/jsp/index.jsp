@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 
@@ -85,18 +88,18 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><sec:authentication property="principal.username"></sec:authentication><span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
                                     <img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
                                 </li>
                                 <li>
                                     <div class="profile-info">
-                                        <h4 class="username">Emily Hart</h4>
-                                        <p>emily_hart@email.com</p>
+                                        <h4 class="username"><sec:authentication property="principal.username"></sec:authentication></h4>
+                                        <p>894857973@qq.com</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
                                             <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                            <button type="button" class="btn btn-default" id="logoutBtn"  name="logoutBtn"><i class="fa fa-sign-out"></i> Logout</button>
                                         </div>
                                     </div>
                                 </li>
@@ -111,7 +114,7 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">
                                 <div class="icon fa fa-paper-plane"></div>
-                                <div class="title">Flat Admin V.2</div>
+                                <div class="title">Property Service MS</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -119,55 +122,44 @@
                         </div>
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html">
+                                <a href="index.jsp">
                                     <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
                                 </a>
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon fa fa-desktop"></span><span class="title">UI Kits</span>
+                                    <span class="icon fa fa-desktop"></span><span class="title">缴费管理</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="ui-kits/theming.html">Theming</a>
+                                            <li><a href="ui-kits/grid.html">缴费情况查询</a>
                                             </li>
-                                            <li><a href="ui-kits/grid.html">Grid</a>
+                                            <!-- 具有管理员权限 -->
+                                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                            <li><a href="ui-kits/theming.html">缴费细则编辑</a>
                                             </li>
-                                            <li><a href="ui-kits/button.html">Buttons</a>
+                                            <li><a href="ui-kits/button.html">缴费接口配置</a>
                                             </li>
-                                            <li><a href="ui-kits/card.html">Cards</a>
-                                            </li>
-                                            <li><a href="ui-kits/list.html">Lists</a>
-                                            </li>
-                                            <li><a href="ui-kits/modal.html">Modals</a>
-                                            </li>
-                                            <li><a href="ui-kits/alert.html">Alerts & Toasts</a>
-                                            </li>
-                                            <li><a href="ui-kits/panel.html">Panels</a>
-                                            </li>
-                                            <li><a href="ui-kits/loader.html">Loaders</a>
-                                            </li>
-                                            <li><a href="ui-kits/step.html">Tabs & Steps</a>
-                                            </li>
-                                            <li><a href="ui-kits/other.html">Other</a>
-                                            </li>
+                                            </sec:authorize>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">Table</span>
+                                    <span class="icon fa fa-table"></span><span class="title">通知管理</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="table/table.html">Table</a>
+                                            <li><a href="table/table.html">推送通知至个别用户</a>
                                             </li>
-                                            <li><a href="table/datatable.html">Datatable</a>
+                                            <li><a href="table/datatable.html">推送公告至全部用户</a>
+                                            </li>
+                                            <li><a href="table/datatable.html">通知查询</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -175,13 +167,15 @@
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">用户管理</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-form" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="form/ui-kits.html">Form UI Kits</a>
+                                            <li><a href="form/ui-kits.html">权限管理</a>
+                                            </li>
+                                            <li><a href="form/ui-kits.html">用户资料查询</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -342,7 +336,7 @@
                                     <div class="thumbnail no-margin-bottom">
                                         <img src="../img/thumbnails/picjumbo.com_IMG_3241.jpg" class="img-responsive">
                                         <div class="caption">
-                                            <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+                                            <h3 id="thumbnail-label1">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
                                             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
                                             <p><a href="#" class="btn btn-success" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
                                         </div>
@@ -443,6 +437,9 @@
             </div>
         </footer>
         <div>
+            </div>
+        </div>
+</body>
             <!-- Javascript Libs -->
             <script type="text/javascript" src="../lib/js/jquery.min.js"></script>
             <script type="text/javascript" src="../lib/js/bootstrap.min.js"></script>
@@ -458,6 +455,4 @@
             <!-- Javascript -->
             <script type="text/javascript" src="../js/app.js"></script>
             <script type="text/javascript" src="../js/index.js"></script>
-</body>
-
 </html>

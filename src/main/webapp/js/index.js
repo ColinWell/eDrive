@@ -132,3 +132,23 @@ $(function() {
   };
   myLineChart = new Chart(ctx).Line(data, options);
 });
+
+$('#logoutBtn').click(function() {
+  $.ajax({
+    type: "POST",
+    url: "/logout",
+    contentType: "application/json", //必须有
+    dataType: "json", //表示返回值类型，不必须
+
+    success: function (jsonResult) {
+      console.log(jsonResult,"jsonResult");
+      console.log(JSON.stringify(jsonResult));
+      console.log(jsonResult.loginResult);
+      window.location.href="/jsp/login.jsp";
+    },
+    error: function (jsonResult) {
+      console.log("what");
+      console.log(jsonResult);
+    }
+  });
+});

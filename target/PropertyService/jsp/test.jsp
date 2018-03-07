@@ -29,21 +29,23 @@
         var timestamp = Date.parse(new Date());
         $.ajax({
             type: "POST",
-            url: "/jsp/login.jsp",
+            url: "/login?j_username=zhang&j_password=123",
             contentType: "application/json", //必须有
-            dataType: "json", //表示返回值类型，不必须
+//            dataType: "json", //表示返回值类型，不必须
             data: JSON.stringify({
-                logname: 'zhang',
-                //password: 'e10adc3949ba59abbe56e057f20f883e'
-                password:'123'
+//                j_username:'zhang',
+//                //password: 'e10adc3949ba59abbe56e057f20f883e'
+//                j_password:'123'
             }),  //相当于 //data: "{'str1':'foovalue', 'str2':'barvalue'}",
             success: function (jsonResult) {
 
                 console.log(jsonResult,"jsonResult");
                 console.log(jsonResult.code,"jsonResult");
                 console.log(JSON.stringify(jsonResult));
-
+                console.log(jsonResult.loginResult);
                 //var info = jQuery.parseJSON(jsonResult);
+                alert("登录成功");
+                window.location.href="/jsp/user.jsp";
             },
             error: function (jsonResult) {
                 console.log("what");

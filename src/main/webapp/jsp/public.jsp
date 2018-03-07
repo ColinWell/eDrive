@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h5>Hello Buddies! </h5>
-	<a href="/jsp/login.jsp">login</a>
+	<a href="${ctx}/jsp/login.jsp">login</a>
 </body>
 </html>

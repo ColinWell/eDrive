@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.ch.service.SecurityTestInterface;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class SecurityTest {
     @Resource
@@ -50,4 +53,30 @@ public class SecurityTest {
         return new ModelAndView("user");
     }
 
+    @RequestMapping(value="/loginSucceed")//普通用户登录成功
+    @ResponseBody
+    public Object loginSucceed(HttpServletRequest req,HttpServletResponse res){
+        Map<String,Object> m = new HashMap<String,Object>();
+        m.put("loginResult","true");
+        m.put("sessionId",req.getRequestedSessionId());
+        return m;
+    }
+
+    @RequestMapping(value="/loginFailed")//普通用户登录失败
+    @ResponseBody
+    public Object loginFailed(HttpServletRequest req,HttpServletResponse res){
+        Map<String,Object> m = new HashMap<String,Object>();
+        m.put("loginResult","false");
+        m.put("sessionId",req.getRequestedSessionId());
+        return m;
+    }
+
+    @RequestMapping(value="/logoutSucceed")//普通用户登录成功
+    @ResponseBody
+    public Object logoutSucceed(HttpServletRequest req,HttpServletResponse res){
+        Map<String,Object> m = new HashMap<String,Object>();
+        m.put("logoutResult","true");
+        m.put("sessionId",req.getRequestedSessionId());
+        return m;
+    }
 }

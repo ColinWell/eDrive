@@ -27,13 +27,13 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 		<!--<sec:form-login authentication-failure-url="/jsp/login.jsp" authentication-success-forward-url="/jsp/user.jsp" login-page="/jsp/login.jsp" login-processing-url="/j_spring_security_check"/>-->
 		<sec:form-login login-page="/jsp/login.jsp"
 						login-processing-url="/login"
-						authentication-success-forward-url="/jsp/user.jsp"
-						authentication-failure-forward-url="/jsp/login.jsp?error=1"
+						authentication-success-forward-url="/loginSucceed.do"
+						authentication-failure-forward-url="/loginFailed.do"
 						username-parameter="j_username"
 						password-parameter="j_password"
 		/>
 		<!-- 设置用户默认退出登录页面 -->
-		<sec:logout logout-url="/logout" logout-success-url="/jsp/login.jsp" invalidate-session="true"/>
+		<sec:logout logout-url="/logout" logout-success-url="/logoutSucceed.do" invalidate-session="true"/>
 		<!-- 对于没有权限的页面跳转到-->
 		<sec:access-denied-handler error-page="/jsp/403.jsp"/>
 

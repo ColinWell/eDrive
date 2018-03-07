@@ -28,7 +28,7 @@ import com.google.gson.Gson;
 
 @Service("mySecurityMetadataSource")
 public class MySecurityMetadataSource implements FilterInvocationSecurityMetadataSource{
-	//ÓÉspringµ÷ÓÃ
+	//ç”±springè°ƒç”¨
 	Logger log = LogManager.getLogger(MySecurityMetadataSource.class);
 	@Resource
 	private SecurityTestInterface dao;
@@ -49,7 +49,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 		// TODO Auto-generated method stub
 		return true;
 	}
-	//¼ÓÔØËùÓĞ×ÊÔ´ÓëÈ¨ÏŞµÄ¹ØÏµ
+	//åŠ è½½æ‰€æœ‰èµ„æºä¸æƒé™çš„å…³ç³»
 	private void loadResourceDefine() {
 		if(resourceMap == null) {
 			resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
@@ -66,18 +66,18 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 				}
 				
 			}
-			//ÒÔÈ¨ÏŞÃû·â×°ÎªSpringµÄsecurity Object
+			//ä»¥æƒé™åå°è£…ä¸ºSpringçš„security Object
 			
 		}
 		Gson gson =new Gson();
-		log.info("È¨ÏŞ×ÊÔ´¶ÔÓ¦¹ØÏµ£º"+gson.toJson(resourceMap));
+		log.info("æƒé™èµ„æºå¯¹åº”å…³ç³»ï¼š"+gson.toJson(resourceMap));
 		
 		
 		Set<Entry<String, Collection<ConfigAttribute>>> resourceSet = resourceMap.entrySet();
 		Iterator<Entry<String, Collection<ConfigAttribute>>> iterator = resourceSet.iterator();
 		
 	}
-	//·µ»ØËùÇëÇó×ÊÔ´ËùĞèÒªµÄÈ¨ÏŞ
+	//è¿”å›æ‰€è¯·æ±‚èµ„æºæ‰€éœ€è¦çš„æƒé™
 	public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
 		
 		String requestUrl = ((FilterInvocation) object).getRequestUrl();
@@ -85,7 +85,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 		if(resourceMap == null) {
 			loadResourceDefine();
 		}
-		log.info("Í¨¹ı×ÊÔ´¶¨Î»µ½µÄÈ¨ÏŞ£º"+resourceMap.get(requestUrl));
+		log.info("é€šè¿‡èµ„æºå®šä½åˆ°çš„æƒé™ï¼š"+resourceMap.get(requestUrl));
 		log.info(resourceMap.toString());
 		return resourceMap.get(requestUrl);
 	}
