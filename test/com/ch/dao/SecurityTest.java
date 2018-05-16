@@ -14,12 +14,12 @@ public class SecurityTest extends BaseJunit4Test{
     @Resource
     private JdbcTemplate jdbcTemplate;
     @Resource
-    private SecurityTestDao securityTestDao;
+    private LoginDao loginDao;
     @Test
     @Rollback(value = true)
     public void test(){
 //        String sql = "insert into user(logname,password,role_ids) values('Colin','123456','ROLE_ADMIN')";
 //        jdbcTemplate.execute(sql);
-        securityTestDao.findResource();
+        loginDao.findResource();
     }
 }

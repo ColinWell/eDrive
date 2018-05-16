@@ -12,42 +12,40 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 @Service("myAccessDecisionManager")
 public class MyAccessDecisionManager implements AccessDecisionManager{
-	Logger log = LogManager.getLogger(MyAccessDecisionManager.class);
-	@Override
-	public void decide(Authentication authentication, Object object,
-			Collection<ConfigAttribute> configAttributes) throws AccessDeniedException,
-			InsufficientAuthenticationException {
-			// TODO Auto-generated method stub
-		//»Áπ˚∂‘”¶◊ ‘¥√ª”–’“µΩΩ«…´ ‘Ú∑≈––
-		 	if(configAttributes == null){
-		 		
-	            return ;
-	        }
-		
-			log.info("object is a URL:"+object.toString());  //object is a URL.
-			Iterator<ConfigAttribute> ite=configAttributes.iterator();
-			while(ite.hasNext()){
-				ConfigAttribute ca=ite.next();
-				String needRole=ca.getAttribute();
-				for(GrantedAuthority ga:authentication.getAuthorities()){
-					if(needRole.equals(ga.getAuthority())){  //ga is user's role.
-						return;
-					}
-				}
-			}
-			throw new AccessDeniedException("no right");
-	}
+    Logger log = LogManager.getLogger(MyAccessDecisionManager.class);
+    @Override
+    public void decide(Authentication authentication, Object object,
+                       Collection<ConfigAttribute> configAttributes) throws AccessDeniedException,
+            InsufficientAuthenticationException {
+        // TODO Auto-generated method stub
+        //Â¶ÇÊûúÂØπÂ∫îËµÑÊ∫êÊ≤°ÊúâÊâæÂà∞ËßíËâ≤ ÂàôÊîæË°å
+        if(configAttributes == null){
+            return ;
+        }
+        log.info("object is a URL:"+object.toString());  //object is a URL.
+        Iterator<ConfigAttribute> ite=configAttributes.iterator();
+        while(ite.hasNext()){
+            ConfigAttribute ca=ite.next();
+            String needRole=ca.getAttribute();
+            for(GrantedAuthority ga:authentication.getAuthorities()){
+                if(needRole.equals(ga.getAuthority())){  //ga is user's role.
+                    return;
+                }
+            }
+        }
+        throw new AccessDeniedException("no right");
+    }
 
-	@Override
-	public boolean supports(ConfigAttribute arg0) {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public boolean supports(ConfigAttribute arg0) {
+        // TODO Auto-generated method stub
+        return true;
+    }
 
-	@Override
-	public boolean supports(Class<?> arg0) {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public boolean supports(Class<?> arg0) {
+        // TODO Auto-generated method stub
+        return true;
+    }
 
 }

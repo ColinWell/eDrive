@@ -12,6 +12,14 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 	<!--<sec:global-method-security jsr250-annotations="enabled"/>-->
 	<!-- 自己写登录页面，并且登陆页面不拦截 -->
 	<sec:http pattern="/jsp/login.jsp" security="none" />
+	<sec:http pattern="/jsp/403.jsp" security="none" />
+	<!-- 不拦截静态资源 -->
+	<sec:http pattern="/css/**" security="none"/>
+	<sec:http pattern="/lib/**" security="none"/>
+	<sec:http pattern="/js/**" security="none"/>
+	<sec:http pattern="/img/**" security="none"/>
+	<sec:http pattern="/html/**" security="none"/>
+	<sec:http pattern="**.ico" security="none"/>
 	<!-- 配置拦截页面  -->								<!-- 启用页面级权限控制 使用表达式 -->
 	<sec:http auto-config="true" use-expressions="true">
 		<!-- requires-channel="any" 设置访问类型http或者https -->
@@ -21,7 +29,7 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
         pattern="/**" 设置在前面，当前登录的用户有ROLE_USER权限，那么就可以登录到admin/admin.jsp
         所以两个配置有先后的。
          -->
-		<!--<sec:intercept-url pattern="/WebContent/WEB-INF/lib" access="hasRole('ROLE_USER')" requires-channel="any"/>-->
+		<!--<sec:intercept-url pattern="/lib/**" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="any"/>-->
 
 		<!-- 设置用户默认登录页面以及登陆后默认跳转页面 -->
 		<!--<sec:form-login authentication-failure-url="/jsp/login.jsp" authentication-success-forward-url="/jsp/user.jsp" login-page="/jsp/login.jsp" login-processing-url="/j_spring_security_check"/>-->

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
+    <title>物业服务后台管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
@@ -90,15 +91,13 @@
                         <li class="dropdown profile">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><sec:authentication property="principal.username"></sec:authentication><span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
-                                <li class="profile-img">
-                                    <img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
-                                </li>
+                                <%--<li class="profile-img">--%>
+                                    <%--<img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">--%>
+                                <%--</li>--%>
                                 <li>
                                     <div class="profile-info">
                                         <h4 class="username"><sec:authentication property="principal.username"></sec:authentication></h4>
-                                        <p>894857973@qq.com</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
                                             <button type="button" class="btn btn-default" id="logoutBtn"  name="logoutBtn"><i class="fa fa-sign-out"></i> Logout</button>
                                         </div>
                                     </div>
@@ -134,13 +133,15 @@
                                 <div id="dropdown-element" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="ui-kits/grid.html">缴费情况查询</a>
+                                            <li><a href="payment/query.jsp">缴费情况查询</a>
                                             </li>
                                             <!-- 具有管理员权限 -->
                                             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                            <li><a href="ui-kits/theming.html">缴费细则编辑</a>
+                                            <li><a href="payment/rule.jsp">缴费细则编辑</a>
                                             </li>
-                                            <li><a href="ui-kits/button.html">缴费接口配置</a>
+                                                <li><a href="payment/ruleDistribute.jsp">缴费规则分配</a>
+                                                </li>
+                                            <li><a href="payment/interface.jsp">缴费接口配置</a>
                                             </li>
                                             </sec:authorize>
                                         </ul>
@@ -155,12 +156,14 @@
                                 <div id="dropdown-table" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="table/table.html">推送通知至个别用户</a>
+                                            <li><a href="notice/individual.jsp">推送通知至个别用户</a>
                                             </li>
-                                            <li><a href="table/datatable.html">推送公告至全部用户</a>
+                                            <li><a href="notice/announce.jsp">推送公告至全部用户</a>
                                             </li>
-                                            <li><a href="table/datatable.html">通知查询</a>
-                                            </li>
+                                            <%--<li><a href="notice/queryNotice.jsp">通知查询</a>--%>
+                                            <%--</li>--%>
+                                            <%--<li><a href="notice/queryAnnounce.jsp">公告查询</a>--%>
+                                            <%--</li>--%>
                                         </ul>
                                     </div>
                                 </div>
@@ -173,27 +176,31 @@
                                 <div id="dropdown-form" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="form/ui-kits.html">权限管理</a>
+                                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                            <li><a href="user/power.jsp">权限管理</a>
                                             </li>
-                                            <li><a href="form/ui-kits.html">用户资料查询</a>
+                                            </sec:authorize>
+                                            <li><a href="user/info.jsp">用户资料查询</a>
+                                            </li>
+                                            <li><a href="user/check.jsp">用户房屋关系审查</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            
+
                             <!-- Dropdown-->
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                                    <span class="icon fa fa-cubes"></span><span class="title">装修申请管理</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="component-example" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="components/pricing-table.html">Pricing Table</a>
+                                            <li><a href="DecorationManage.jsp">装修申请管理</a>
                                             </li>
-                                            <li><a href="components/chartjs.html">Chart.JS</a>
+                                            <li><a href="DecorationRule.jsp">装修规则编辑</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -202,15 +209,15 @@
                             <!-- Dropdown-->
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-example">
-                                    <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
+                                    <span class="icon fa fa-slack"></span><span class="title">报修申请管理</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-example" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="pages/login.html">Login</a>
+                                            <li><a href="RepairManage.jsp">报修申请管理</a>
                                             </li>
-                                            <li><a href="pages/index.html">Landing Page</a>
+                                            <li><a href="RepairRule.jsp">报修规则编辑</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -219,31 +226,37 @@
                             <!-- Dropdown-->
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-icon">
-                                    <span class="icon fa fa-archive"></span><span class="title">Icons</span>
+                                    <span class="icon fa fa-archive"></span><span class="title">紧急联系人</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-icon" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="icons/glyphicons.html">Glyphicons</a>
-                                            </li>
-                                            <li><a href="icons/font-awesome.html">Font Awesomes</a>
+                                            <li><a href="EmergencyManage.jsp">紧急联系人设置</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <a href="license.html">
-                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
+                                <a href="ComplaintManage.jsp">
+                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">投诉</span>
                                 </a>
+                                <div id="dropdown" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="ComplaintManage.jsp">投诉管理</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
                 </nav>
             </div>
-            <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >免费网站模板</a></div>
+            <div class="copyrights">Collect from <a href="/jsp/login.jsp" >物业服务</a></div>
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body padding-top">

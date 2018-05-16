@@ -21,74 +21,74 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 
 
 public class MySecurityFilter extends AbstractSecurityInterceptor implements Filter {
-	Logger log = LogManager.getLogger(MySecurityFilter.class);
+    Logger log = LogManager.getLogger(MySecurityFilter.class);
 
-	private FilterInvocationSecurityMetadataSource securityMetadataSource;
+    private FilterInvocationSecurityMetadataSource securityMetadataSource;
 
-	public SecurityMetadataSource obtainSecurityMetadataSource() {
-		return this.securityMetadataSource;
-	}
-	public FilterInvocationSecurityMetadataSource getSecurityMetadataSource() {
-		return securityMetadataSource;
-	}
+    public SecurityMetadataSource obtainSecurityMetadataSource() {
+        return this.securityMetadataSource;
+    }
+    public FilterInvocationSecurityMetadataSource getSecurityMetadataSource() {
+        return securityMetadataSource;
+    }
 
-	public void setSecurityMetadataSource(
-			FilterInvocationSecurityMetadataSource securityMetadataSource) {
-		this.securityMetadataSource = securityMetadataSource;
-	}
+    public void setSecurityMetadataSource(
+            FilterInvocationSecurityMetadataSource securityMetadataSource) {
+        this.securityMetadataSource = securityMetadataSource;
+    }
 
-	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void destroy() {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void doFilter(ServletRequest req, ServletResponse res,
-			FilterChain chain) throws IOException, ServletException {
-		FilterInvocation fi=new FilterInvocation(req,res,chain);
-		log.info("--------MySecurityFilter--------");
-		invok(fi);
-	}
+    }
 
-	
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse res,
+                         FilterChain chain) throws IOException, ServletException {
+        FilterInvocation fi=new FilterInvocation(req,res,chain);
+        log.info("--------MySecurityFilter--------");
+        invok(fi);
+    }
 
-	private void invok(FilterInvocation fi) throws IOException, ServletException {
-		// objectÎªFilterInvocation¶ÔÏó
-		//1.»ñÈ¡ÇëÇó×ÊÔ´µÄÈ¨ÏŞ
-		//Ö´ĞĞCollection<ConfigAttribute> attributes = SecurityMetadataSource.getAttributes(object);
-		//2.ÊÇ·ñÓµÓĞÈ¨ÏŞ
-		//»ñÈ¡°²È«Ö÷Ìå£¬¿ÉÒÔÇ¿ÖÆ×ª»»ÎªUserDetailsµÄÊµÀı
-		//1) UserDetails
-		// Authentication authenticated = authenticateIfRequired();
-		//this.accessDecisionManager.decide(authenticated, object, attributes);
-		//ÓÃ»§ÓµÓĞµÄÈ¨ÏŞ
-		//2) GrantedAuthority
-		//Collection<GrantedAuthority> authenticated.getAuthorities()
-		log.info("ÓÃ»§·¢ËÍÇëÇó£¡ ");
-		InterceptorStatusToken token = null;
-		
-		token = super.beforeInvocation(fi);
-		
-		try {
-			//Ö´ĞĞÏÂÒ»¸ö¹ıÂËÆ÷
-			fi.getChain().doFilter(fi.getRequest(), fi.getResponse());
-		} finally {
-			super.afterInvocation(token, null);
-		}
-	}
 
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-		
-	}
 
-	
-	public Class<? extends Object> getSecureObjectClass() {
-		//ÏÂÃæµÄMyAccessDecisionManagerµÄsupports·½Ãæ±ØĞë·Å»Øtrue,·ñÔò»áÌáĞÑÀàĞÍ´íÎó
-		return FilterInvocation.class;
-	}
-	
+    private void invok(FilterInvocation fi) throws IOException, ServletException {
+        // objectä¸ºFilterInvocationå¯¹è±¡
+        //1.è·å–è¯·æ±‚èµ„æºçš„æƒé™
+        //æ‰§è¡ŒCollection<ConfigAttribute> attributes = SecurityMetadataSource.getAttributes(object);
+        //2.æ˜¯å¦æ‹¥æœ‰æƒé™
+        //è·å–å®‰å…¨ä¸»ä½“ï¼Œå¯ä»¥å¼ºåˆ¶è½¬æ¢ä¸ºUserDetailsçš„å®ä¾‹
+        //1) UserDetails
+        // Authentication authenticated = authenticateIfRequired();
+        //this.accessDecisionManager.decide(authenticated, object, attributes);
+        //ç”¨æˆ·æ‹¥æœ‰çš„æƒé™
+        //2) GrantedAuthority
+        //Collection<GrantedAuthority> authenticated.getAuthorities()
+        log.info("User send a request! ");
+        InterceptorStatusToken token = null;
+
+        token = super.beforeInvocation(fi);
+
+        try {
+            //æ‰§è¡Œä¸‹ä¸€ä¸ªè¿‡æ»¤å™¨
+            fi.getChain().doFilter(fi.getRequest(), fi.getResponse());
+        } finally {
+            super.afterInvocation(token, null);
+        }
+    }
+
+    @Override
+    public void init(FilterConfig arg0) throws ServletException {
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public Class<? extends Object> getSecureObjectClass() {
+        //ä¸‹é¢çš„MyAccessDecisionManagerçš„supportsæ–¹é¢å¿…é¡»æ”¾å›true,å¦åˆ™ä¼šæé†’ç±»å‹é”™è¯¯
+        return FilterInvocation.class;
+    }
+
 
 }

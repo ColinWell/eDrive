@@ -1,5 +1,6 @@
 package com.ch.common.context;
 
+import com.ch.common.utils.encrypt.MD5Utils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
@@ -8,11 +9,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class MyPasswordEncoder implements PasswordEncoder {
     @Override
     public String encode(CharSequence charSequence) {
-        return charSequence.toString();
+        return encodePassword(charSequence.toString());
     }
 
     @Override
     public boolean matches(CharSequence charSequence, String s) {
-        return s.equals(charSequence.toString());
+        return s.equals(encodePassword(charSequence.toString()));
+    }
+
+    public static String encodePassword(String password){
+        return MD5Utils.getMD5String(MD5Utils.getMD5String(password));
     }
 }

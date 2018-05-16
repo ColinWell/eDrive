@@ -581,7 +581,7 @@ a:hover {
       margin-top: 15px; }
 
 body.login-page {
-  background: url(../../img/app-header-bg.jpg) no-repeat center center fixed;
+  background: url(../img/app-header-bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1238,3 +1238,9 @@ body.login-page {
   .featurette-heading {
     margin-top: 100px;
     margin-bottom: 20px; } }
+
+/** table
+------------------------------------**/
+#menuTable td{
+  border-top:none;
+}

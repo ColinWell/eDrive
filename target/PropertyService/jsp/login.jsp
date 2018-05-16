@@ -44,10 +44,10 @@
 						</div>
 						<form id="loginForm"  method="post">
 							<div class="control">
-								<input type="text" class="form-control" name="j_username" placeholder="please input your account" />
+								<input type="text" class="form-control" name="j_username" value="admin" placeholder="please input your account" />
 							</div>
 							<div class="control">
-								<input type="password" class="form-control" name="j_password" placeholder="please input your password" />
+								<input type="password" class="form-control" name="j_password" value="123456" placeholder="please input your password" />
 							</div>
 							<div class="login-button text-center">
 								<input id="loginBtn" type="button" class="btn btn-primary" value="Login">
@@ -104,8 +104,10 @@
 				console.log(JSON.stringify(jsonResult));
 				console.log(jsonResult.loginResult);
 				//var info = jQuery.parseJSON(jsonResult);
-				alert("登录成功");
-				window.location.href="/jsp/index.jsp";
+			//	alert("登录成功");
+				if(jsonResult.loginResult == "true") {
+					window.location.href = "/jsp/index.jsp";
+				}
 			},
 			error: function (jsonResult) {
 				console.log("what");

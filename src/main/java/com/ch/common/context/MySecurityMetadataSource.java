@@ -12,7 +12,7 @@ import java.util.Map.Entry;
 import javax.annotation.Resource;
 
 import com.ch.pojo.URLResource;
-import com.ch.service.SecurityTestInterface;
+import com.ch.service.LoginService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.access.ConfigAttribute;
@@ -31,7 +31,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 	//由spring调用
 	Logger log = LogManager.getLogger(MySecurityMetadataSource.class);
 	@Resource
-	private SecurityTestInterface dao;
+	private LoginService dao;
 	private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
 
 	/*public MySecurityMetadataSource() {
@@ -64,13 +64,11 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 					configAttributes.add(configAttribute);
 					resourceMap.put(resource, configAttributes);
 				}
-				
 			}
 			//以权限名封装为Spring的security Object
-			
 		}
 		Gson gson =new Gson();
-		log.info("权限资源对应关系："+gson.toJson(resourceMap));
+		log.info("Correspondence between resource and permissions:"+gson.toJson(resourceMap));
 		
 		
 		Set<Entry<String, Collection<ConfigAttribute>>> resourceSet = resourceMap.entrySet();
@@ -85,7 +83,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 		if(resourceMap == null) {
 			loadResourceDefine();
 		}
-		log.info("通过资源定位到的权限："+resourceMap.get(requestUrl));
+		log.info("Permissions for resources:"+resourceMap.get(requestUrl));
 		log.info(resourceMap.toString());
 		return resourceMap.get(requestUrl);
 	}

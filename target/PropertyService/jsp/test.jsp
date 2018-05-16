@@ -29,12 +29,13 @@
         var timestamp = Date.parse(new Date());
         $.ajax({
             type: "POST",
-            url: "/login?j_username=zhang&j_password=123",
+            url: "/user/setSignal.do?userId=1&signal=helloWorld",//"/login?j_username=zhang&j_password=123",
             contentType: "application/json", //必须有
 //            dataType: "json", //表示返回值类型，不必须
             data: JSON.stringify({
 //                j_username:'zhang',
-//                //password: 'e10adc3949ba59abbe56e057f20f883e'
+                  userId:1,
+                  signal:"hello world!"
 //                j_password:'123'
             }),  //相当于 //data: "{'str1':'foovalue', 'str2':'barvalue'}",
             success: function (jsonResult) {
@@ -44,8 +45,8 @@
                 console.log(JSON.stringify(jsonResult));
                 console.log(jsonResult.loginResult);
                 //var info = jQuery.parseJSON(jsonResult);
-                alert("登录成功");
-                window.location.href="/jsp/user.jsp";
+//                alert("登录成功");
+//                window.location.href="/jsp/user.jsp";
             },
             error: function (jsonResult) {
                 console.log("what");
@@ -57,31 +58,18 @@
     $('#register').click(function() {
         var timestamp = Date.parse(new Date());
         $.ajax({
-            type: "POST",
-            url: "/user",
-            contentType: "application/json", //必须有
+            type: "GET",
+            url: "/payment/getRuleVer.do?userName=admin&ruleType=1",
             dataType: "json", //表示返回值类型，不必须
-            data: JSON.stringify({
-                timestamp: 'sss',
-                data: {
-                    phone: '15280126526',
-                    password: 'e10adc3949ba59abbe56e057f20f883e'
-                },
-                sign: 'sdfksdjf'
-            }),  //相当于 //data: "{'str1':'foovalue', 'str2':'barvalue'}",
             success: function (jsonResult) {
-
                 console.log(jsonResult,"jsonResult");
                 console.log(jsonResult.code,"jsonResult");
                 console.log(JSON.stringify(jsonResult));
-
-                //var info = jQuery.parseJSON(jsonResult);
             },
             error: function (jsonResult) {
                 console.log("what");
                 console.log(jsonResult);
             }
-
         });
     });
     $('#update').click(function() {

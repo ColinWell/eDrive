@@ -1,7 +1,6 @@
 package com.ch.common.context;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -14,44 +13,44 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.ch.service.SecurityTestInterface;
+import com.ch.service.LoginService;
 import com.ch.pojo.Users;
 /**
- * ÔÚspring-security.xmlÖĞÈç¹ûÅäÖÃÁË
+ * åœ¨spring-security.xmlä¸­å¦‚æœé…ç½®äº†
  * <authentication-manager>
-		<authentication-provider user-service-ref="myUserDetailsService" />
-  </authentication-manager>
- * ½«»áÊ¹ÓÃÕâ¸öÀà½øĞĞÈ¨ÏŞµÄÑéÖ¤¡£
- * 
+ <authentication-provider user-service-ref="myUserDetailsService" />
+ </authentication-manager>
+ * å°†ä¼šä½¿ç”¨è¿™ä¸ªç±»è¿›è¡Œæƒé™çš„éªŒè¯ã€‚
+ *
  * **/
 @Service("myUserDetailsService")
 public class MyUserDetailsService implements UserDetailsService{
-	@Resource
-	private SecurityTestInterface dao;
+    @Resource
+    private LoginService loginService;
 
-	//µÇÂ¼ÑéÖ¤
-	public UserDetails loadUserByUsername(String name)
-			throws UsernameNotFoundException {
-		System.out.println("show login name£º"+name+" ");
-		Users users =dao.findbyUsername(name);
-		Set<GrantedAuthority> grantedAuths=obtionGrantedAuthorities(users);
-		
-		boolean enables = true;
-		boolean accountNonExpired = true;
-		boolean credentialsNonExpired = true;
-		boolean accountNonLocked = true;
-		//·â×°³Éspring securityµÄuser
-		User userdetail = new User(users.getName(), users.getPassword(), enables, accountNonExpired, credentialsNonExpired, accountNonLocked, grantedAuths);
-		return userdetail;
-	}
-	//²éÕÒÓÃ»§È¨ÏŞ
-	public Set<GrantedAuthority> obtionGrantedAuthorities(Users users){
-		String roles[] = users.getRole().split(",");
-		Set<GrantedAuthority> authSet=new HashSet<GrantedAuthority>();
-		for (int i = 0; i < roles.length; i++) {
-			authSet.add(new SimpleGrantedAuthority(roles[i]));
-		}
-		return authSet;
-	}
+    //ç™»å½•éªŒè¯
+    public UserDetails loadUserByUsername(String name)
+            throws UsernameNotFoundException {
+        System.out.println("show login nameï¼š"+name+" ");
+        Users users =loginService.findByUsername(name);
+        Set<GrantedAuthority> grantedAuths=obtionGrantedAuthorities(users);
+
+        boolean enables = true;
+        boolean accountNonExpired = true;
+        boolean credentialsNonExpired = true;
+        boolean accountNonLocked = true;
+        //å°è£…æˆspring securityçš„user
+        User userdetail = new User(users.getName(), users.getPassword(), enables, accountNonExpired, credentialsNonExpired, accountNonLocked, grantedAuths);
+        return userdetail;
+    }
+    //æŸ¥æ‰¾ç”¨æˆ·æƒé™
+    public Set<GrantedAuthority> obtionGrantedAuthorities(Users users){
+        String roles[] = users.getRole().split(",");
+        Set<GrantedAuthority> authSet=new HashSet<GrantedAuthority>();
+        for (int i = 0; i < roles.length; i++) {
+            authSet.add(new SimpleGrantedAuthority(roles[i]));
+        }
+        return authSet;
+    }
 
 }
