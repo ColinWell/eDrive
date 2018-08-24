@@ -1261,7 +1261,7 @@ var CssHighlightRules = function() {
             regex : "['](?:(?:\\\\.)|(?:[^'\\\\]))*?[']"
         }, {
             token : ["constant.numeric", "keyword"],
-            regex : "(" + numRe + ")(ch|cm|deg|em|ex|fr|gd|grad|Hz|in|kHz|mm|ms|pc|pt|px|rad|rem|s|turn|vh|vm|vw|%)"
+            regex : "(" + numRe + ")(edrive|cm|deg|em|ex|fr|gd|grad|Hz|in|kHz|mm|ms|pc|pt|px|rad|rem|s|turn|vh|vm|vw|%)"
         }, {
             token : "constant.numeric",
             regex : numRe

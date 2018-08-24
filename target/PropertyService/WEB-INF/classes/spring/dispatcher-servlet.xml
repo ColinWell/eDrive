@@ -19,7 +19,7 @@
     <!--
         使Spring支持自动检测组件，如注解的Controller
     -->
-    <context:component-scan base-package="com.ch"/>
+    <context:component-scan base-package="com.edrive"/>
 
     <aop:aspectj-autoproxy/> <!-- 开启AOP  -->
   
@@ -79,9 +79,11 @@
 		<property name="dataSource" ref="dataSource">
 		</property>
 	</bean>
+	<!-- 基于注解的事务处理 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<!-- Aop切入点 -->
 	<aop:config>
-		<aop:pointcut expression="within(com.ch.dao.*)" id="serviceOperaton"/>
+		<aop:pointcut expression="within(com.edrive.dao.*)" id="serviceOperaton"/>
 		<aop:advisor advice-ref="txadvice" pointcut-ref="serviceOperaton"/>
 	</aop:config>
 	<!-- 使用了jdk的自动动态代理,需要在<aop:aspectj-autoproxy中添加proxy-target-class="true"  -->

@@ -27,7 +27,7 @@
 
         <!-- <Logger name="com.cssweb.test.app" level="trace" additivity="true">
             <AppenderRef ref="running-log" /> </Logger> -->
-        <logger name="com.ch.*" level="error" additivity="false">
+        <logger name="com.edrive.*" level="error" additivity="false">
             <AppenderRef ref="Console" />
             <AppenderRef ref="running-log" />
         </logger>

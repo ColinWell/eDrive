@@ -33,7 +33,7 @@
 			<div class="login-form row">
 				<div class="col-sm-12 text-center login-header">
 					<i class="login-logo fa fa-connectdevelop fa-5x"></i>
-					<h4 class="login-title">Property Service Management System</h4>
+					<h4 class="login-title">eDrive Management System</h4>
 				</div>
 				<div class="col-sm-12">
 					<div class="login-body">
@@ -44,10 +44,10 @@
 						</div>
 						<form id="loginForm"  method="post">
 							<div class="control">
-								<input type="text" class="form-control" name="j_username" value="admin" placeholder="please input your account" />
+								<input type="text" class="form-control" name="j_username"  placeholder="please input your account" />
 							</div>
 							<div class="control">
-								<input type="password" class="form-control" name="j_password" value="123456" placeholder="please input your password" />
+								<input type="password" class="form-control" name="j_password"  placeholder="please input your password" />
 							</div>
 							<div class="login-button text-center">
 								<input id="loginBtn" type="button" class="btn btn-primary" value="Login">

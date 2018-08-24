@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="eDrive:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="eDrive.war">
+      <element id="artifact" artifact-name="eDrive:war exploded" />
+    </root>
+  </artifact>
+</component>

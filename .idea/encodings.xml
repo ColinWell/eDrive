@@ -2,11 +2,11 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ch/common/context/MyAccessDecisionManager.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ch/common/context/MyPasswordEncoder.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ch/common/context/MySecurityFilter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ch/common/context/MySecurityMetadataSource.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/ch/common/context/MyUserDetailsService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/edrive/common/context/MyAccessDecisionManager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/edrive/common/context/MyPasswordEncoder.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/edrive/common/context/MySecurityFilter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/edrive/common/context/MySecurityMetadataSource.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/edrive/common/context/MyUserDetailsService.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
